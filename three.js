@@ -254,7 +254,7 @@ win1.classList="absolute border-8 rounded-3xl font-bold p-6 bg-green-500 top-80 
 win.innerText="🏆WIN🏆"
 win.classList="text-7xl"
 pl.classList="text-8xl"
-pll.innerText="1"
+pll.innerText="2"
 pll.classList="text-8xl"
 
 }
@@ -265,7 +265,7 @@ win1.classList="absolute border-8 rounded-3xl font-bold p-6 bg-green-500 top-80 
 win.innerText="🏆WIN🏆"
 win.classList="text-7xl"
 pl.classList="text-8xl"
-pll.innerText="2"
+pll.innerText="1"
 pll.classList="text-8xl"
 
 }
@@ -291,3 +291,4 @@ function celebrateWinner(player) {
   const audio = new Audio('https://www.myinstants.com/media/sounds/cheer.mp3');
   audio.play();
 }
+
