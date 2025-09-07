@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+      <link href="./output.css" rel="stylesheet">
+
+<style>
+/* Winner text neon glow */
+@keyframes neonFlash {
+  0%,100% { text-shadow: 0 0 5px #ff0,0 0 15px #f00,0 0 30px #f0f; color:#fff; }
+  50% { text-shadow:0 0 20px #0ff,0 0 40px #0f0,0 0 60px #ff0; color:#ff0; transform: scale(1.2) rotate(-3deg); }
+}
+.winner-animate { animation: neonFlash 1s infinite alternate; }
+
+/* Confetti falling */
+@keyframes confettiFall {
+  0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(800px) rotate(360deg); opacity: 0; }
+}
+.confetti {
+  position: absolute;
+  width: 10px; height: 10px;
+  background: red; 
+  top: -50px;
+  animation: confettiFall 3s linear forwards;
+}
+  /* Board 3D entry */
+  @keyframes boardEntry3D {
+    0% { transform: rotateX(90deg) scale(0.3); opacity: 0; }
+    60% { transform: rotateX(-20deg) scale(1.05); opacity: 1; }
+    100% { transform: rotateX(0deg) scale(1); }
+  }
+  .board-3d { animation: boardEntry3D 1s ease-out forwards; transform-origin: center; }
+
+  /* Grid / O/X button blast */
+  @keyframes buttonBlast {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.4) rotate(10deg); box-shadow: 0 0 25px red; background: #ff4444; color: white; }
+    70% { transform: scale(0.8) rotate(-10deg); }
+    100% { transform: scale(1); box-shadow: none; background: inherit; }
+  }
+  .btn-blast { animation: buttonBlast 0.5s ease; }
+
+  /* Winner neon flash */
+  @keyframes neonFlash {
+    0%,100% { text-shadow: 0 0 5px #ff0,0 0 15px #f00,0 0 30px #f0f; color:#fff; }
+    50% { text-shadow:0 0 20px #0ff,0 0 40px #0f0,0 0 60px #ff0; color:#ff0; transform: scale(1.2) rotate(-3deg); }
+  }
+  .winner-animate { animation: neonFlash 1s infinite alternate; }
+
+  /* Restart button arcade style */
+  @keyframes restartBlast {
+    0%   { transform: scale(1) rotate(0deg); background:#ef4444; color:#facc15; box-shadow:0 0 0 #fff; }
+    20%  { transform: scale(1.2) rotate(5deg); background:#dc2626; color:#fff; box-shadow:0 0 15px #ff0,0 0 30px #f0f; }
+    40%  { transform: scale(0.9) rotate(-5deg); background:#b91c1c; color:#ff0; box-shadow:0 0 20px #0ff,0 0 40px #0f0; }
+    60%  { transform: scale(1.15) rotate(3deg); background:#f87171; color:#fff; box-shadow:0 0 25px #ff0,0 0 50px #f0f; }
+    80%  { transform: scale(0.95) rotate(-2deg); background:#ef4444; color:#facc15; box-shadow:0 0 15px #0ff,0 0 30px #ff0; }
+    100% { transform: scale(1) rotate(0deg); background:#ef4444; color:#facc15; box-shadow:0 0 0 #fff; }
+  }
+  .restart-animate { animation: restartBlast 0.6s ease-in-out; }
+
+  /* Board 3D entry */
+  @keyframes boardEntry3D {
+    0% { transform: rotateX(90deg) scale(0.3); opacity: 0; }
+    60% { transform: rotateX(-20deg) scale(1.05); opacity: 1; }
+    100% { transform: rotateX(0deg) scale(1); }
+  }
+  .board-3d { animation: boardEntry3D 1s ease-out forwards; transform-origin: center; }
+
+  /* Button explosion (O/X + grid) */
+  @keyframes buttonBlast {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.4) rotate(10deg); box-shadow: 0 0 25px red; background: #ff4444; color: white; }
+    70% { transform: scale(0.8) rotate(-10deg); }
+    100% { transform: scale(1); box-shadow: none; background: inherit; }
+  }
+  .btn-blast { animation: buttonBlast 0.5s ease; }
+
+  /* Winner neon flash */
+  @keyframes neonFlash {
+    0%,100% { text-shadow: 0 0 5px #ff0,0 0 15px #f00,0 0 30px #f0f; color:#fff; }
+    50% { text-shadow:0 0 20px #0ff,0 0 40px #0f0,0 0 60px #ff0; color:#ff0; transform: scale(1.2) rotate(-3deg); }
+  }
+  .winner-animate { animation: neonFlash 1s infinite alternate; }
+
+  /* Restart button arcade blast, synced with theme */
+  @keyframes restartBlast {
+    0%   { transform: scale(1) rotate(0deg); background:#ef4444; color:#facc15; box-shadow:0 0 0 #fff; }
+    20%  { transform: scale(1.2) rotate(5deg); background:#dc2626; color:#fff; box-shadow:0 0 15px #ff0,0 0 30px #f0f; }
+    40%  { transform: scale(0.9) rotate(-5deg); background:#b91c1c; color:#ff0; box-shadow:0 0 20px #0ff,0 0 40px #0f0; }
+    60%  { transform: scale(1.15) rotate(3deg); background:#f87171; color:#fff; box-shadow:0 0 25px #ff0,0 0 50px #f0f; }
+    80%  { transform: scale(0.95) rotate(-2deg); background:#ef4444; color:#facc15; box-shadow:0 0 15px #0ff,0 0 30px #ff0; }
+    100% { transform: scale(1) rotate(0deg); background:#ef4444; color:#facc15; box-shadow:0 0 0 #fff; }
+  }
+  .restart-animate { animation: restartBlast 0.6s ease-in-out; }
+</style>
+
+
+
+</head>
+<body>
+    <div class="h-screen items-center justify-center flex">
+  <div class="bg-purple-600 border-8 relative size-200 flex justify-center items-center">
+    <h1 class="text-5xl absolute font-bold text-white text-center mb-140 bg-yellow-500 inline-block px-4 py-2 -180 rounded-2xl ">
+      TIC TAC TOE
+    </h1>
+    <div id="show" class="grid grid-cols-3 absolute  gap-3 border-6 border-purple-950 " >
+        <button onclick="clickoperation()" id="1" class="bg-green-200 size-30 text-7xl border-5 border-yellow-300"></button>
+        <button onclick="clickoperation1()" id="2" class="bg-green-200 size-30 text-7xl border-5 border-yellow-300"></button>
+        <button onclick="clickoperation2()" id="3" class="bg-green-200 size-30 text-7xl border-5 border-yellow-300"></button>
+
+        <button onclick="clickoperation3()" id="4" class="bg-green-200 size-30 text-7xl border-5 border-yellow-300"></button>
+        <button onclick="clickoperation4()" id="5" class="bg-green-200 size-30 text-7xl border-5  border-yellow-300"></button>
+        <button onclick="clickoperation5()" id="6" class="bg-green-200 size-30 text-7xl border-5 border-yellow-300"></button>
+
+        <button onclick="clickoperation6()" id="7" class="bg-green-200 size-30 text-7xl border-5 border-yellow-300"></button>
+        <button onclick="clickoperation7()" id="8" class="bg-green-200 size-30 text-7xl border-5 border-yellow-300"></button>
+        <button onclick="clickoperation8()" id="9" class="bg-green-200 size-30 text-7xl border-5   border-yellow-300"></button>
+
+    </div>
+        <div class="absolute top-65 text-3xl left-8"><h1 class="text-black font-bold " id="PLAYER"> PLAYER 1</h1></div>
+    <div class="absolute top-65 text-3xl right-8"><h1 class="text-black font-bold " id="PLAYER"> PLAYER 2</h1></div>
+
+               <button id="zero" class="absolute left-8 bg-green-200 size-30 font-bold p-6 text-7xl border-5 border-yellow-300">O</button>
+               <button id="cross" class="absolute right-8 bg-green-200 size-30 font-bold p-6 text-7xl border-5 border-yellow-300">X</button>
+
+
+  </div>
+   <div id="win1" class=""><p id="win" class=""></p></div>
+
+ <div id="pl1" class=""><p id="pl"class="text-8xl"></p><p id="pll" class=""></p></div>
+ <div class="absolute bottom-50 text-7xl bg-red-500 p-5 border-5 rounded-full text-yellow-500" onclick="restartbutton()" id="restart"><p>RESTART</p></div>
+</div>
+       <script src="two.js"></script>
+     <script>
+  // Board 3D entry
+  window.addEventListener("load", () => {
+    document.querySelector(".bg-purple-600").classList.add("board-3d");
+  });
+
+  // Grid/O/X buttons blast
+  document.querySelectorAll("button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      if(btn.id !== "restart"){ // Restart button ko exclude
+        btn.classList.remove("btn-blast");
+        void btn.offsetWidth;
+        btn.classList.add("btn-blast");
+      }
+    });
+  });
+
+  // Restart button animation
+  const restartBtn = document.getElementById("restart");
+  restartBtn.addEventListener("click", () => {
+    restartBtn.classList.remove("restart-animate");
+    void restartBtn.offsetWidth;
+    restartBtn.classList.add("restart-animate");
+
+    if (typeof restartbutton === "function") restartbutton();
+  });
+
+  // Winner neon flash
+  const winText = document.getElementById("win");
+  const observer = new MutationObserver(() => {
+    if(winText.textContent.trim() !== "") {
+      winText.classList.add("winner-animate");
+    }
+  });
+  observer.observe(winText, { childList: true, subtree: true });
+  
+</script>
+
+
+</body>
+</html>

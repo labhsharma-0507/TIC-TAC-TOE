@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+      <link href="./output.css" rel="stylesheet"> 
+<style>
+  /* Title glow + bounce */
+  @keyframes glowBounce {
+    0%   { transform: translateY(-200px) scale(0.8); opacity: 0; text-shadow: 0 0 5px #fff; }
+    50%  { transform: translateY(20px) scale(1.1); opacity: 1; text-shadow: 0 0 20px #ff0, 0 0 30px #f0f; }
+    100% { transform: translateY(0) scale(1); text-shadow: 0 0 15px #0ff, 0 0 25px #ff0; }
+  }
+  h1 {
+    animation: glowBounce 1.2s ease-out forwards;
+  }
+
+  /* Grid cells fade-in with stagger */
+  @keyframes cellPop {
+    0%   { transform: scale(0.2) rotate(-180deg); opacity: 0; }
+    70%  { transform: scale(1.2) rotate(10deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0); }
+  }
+  #show button {
+    animation: cellPop 0.8s ease forwards;
+  }
+  #show button:nth-child(1) { animation-delay: 0.1s; }
+  #show button:nth-child(2) { animation-delay: 0.2s; }
+  #show button:nth-child(3) { animation-delay: 0.3s; }
+  #show button:nth-child(4) { animation-delay: 0.4s; }
+  #show button:nth-child(5) { animation-delay: 0.5s; }
+  #show button:nth-child(6) { animation-delay: 0.6s; }
+  #show button:nth-child(7) { animation-delay: 0.7s; }
+  #show button:nth-child(8) { animation-delay: 0.8s; }
+  #show button:nth-child(9) { animation-delay: 0.9s; }
+
+  /* Start button pulse */
+  @keyframes pulse {
+    0%,100% { transform: scale(1); box-shadow: 0 0 10px #0f0, 0 0 20px #ff0; }
+    50% { transform: scale(1.1); box-shadow: 0 0 25px #f0f, 0 0 40px #0ff; }
+  }
+  a[href="one.html"] {
+    animation: pulse 1.5s infinite;
+  }
+
+  /* Page transition */
+  @keyframes rotateExit {
+    0%   { transform: rotateY(0); opacity: 1; }
+    100% { transform: rotateY(90deg) scale(0.9); opacity: 0; filter: blur(4px); }
+  }
+  .rotate-out {
+    animation: rotateExit 0.8s ease forwards;
+    transform-origin: center;
+  }
+</style>
+
+
+</head>
+<body>
+
+    <!-- <div class="h-screen relative flex justify-center items-center"> -->
+            <!-- <div class=" h-screen items-center justify-center flex">
+
+    <div id="root">
+
+        <div class="bg-purple-600  size-200 relative">
+         <h1 class="text-5xl font-bold text-white text-center bg-purple-900  px-4 py-2 rounded ">TIC TAC TOE</h1>
+        </div>
+    </div></div> -->
+    <div class="h-screen items-center relative justify-center flex">
+  <div class="bg-purple-600 border-8 size-200 flex justify-center items-center">
+    <h1 class="text-5xl absolute font-bold text-white text-center mb-140 bg-yellow-500 inline-block px-4 py-2 -180 rounded-2xl ">
+      TIC TAC TOE
+    </h1>
+    <div id="show" class="grid grid-cols-3 gap-3 border-6 border-purple-950 " >
+        <!-- <button class="bg-gray-100 size-30 text-8xl text-center justify-center flex items-center rounded">o</button> -->
+        <button onclick="" id="1" class="bg-green-200 size-30 text-7xl border-5 border-yellow-300"> x</button>
+        <button onclick="" id="2" class="bg-gray-100 size-30"> </button>
+        <button onclick="" id="3" class="bg-gray-100 size-30"> </button>
+
+        <button onclick="" id="4" class="bg-gray-100 size-30"> </button>
+        <button onclick="" id="5" class="bg-green-200 size-30 text-7xl border-5  border-yellow-300"> x</button>
+        <button onclick="" id="6" class="bg-gray-100 size-30"> </button>
+
+        <button onclick="" id="7" class="bg-gray-100 size-30"> </button>
+        <button onclick="" id="8" class="bg-gray-100 size-30"> </button>
+        <button onclick="" id="9" class="bg-green-200 size-30 text-7xl border-5   border-yellow-300"> x</button>
+
+
+    </div>
+ <a href="one.html" target="blank" class="text-5xl hover:bg-red-500 text-white font-bold mt-140 mx-50 absolute bg-green-600 p-3 border-3 cursor-pointer border-purple-950 rounded-full"> START GAME</a>
+  </div></div>
+  <script>
+  const startBtn = document.querySelector("a[href='one.html']");
+  const page = document.body;
+
+  startBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    page.classList.add("rotate-out");
+    page.addEventListener("animationend", () => {
+      window.location.href = startBtn.getAttribute("href");
+    });
+  });
+</script>
+
+   <!-- <script src="my.js"></script> -->
+   <!-- <a href="one.html"target="blank" style="text-decoration: none; color: white; border-style: solid; padding: 10px; background-color: black;"> Submit </a> <br><br> -->
+</body>
+</html>

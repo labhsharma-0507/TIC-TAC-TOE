@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+      <link href="./output.css" rel="stylesheet"> 
+      <style>
+  /* Title glow + bounce */
+  @keyframes glowBounce {
+    0%   { transform: translateY(-200px) scale(0.8); opacity: 0; text-shadow: 0 0 5px #fff; }
+    50%  { transform: translateY(20px) scale(1.1); opacity: 1; text-shadow: 0 0 20px #ff0, 0 0 30px #f0f; }
+    100% { transform: translateY(0) scale(1); text-shadow: 0 0 15px #0ff, 0 0 25px #ff0; }
+  }
+  h1 {
+    animation: glowBounce 1.2s ease-out forwards;
+  }
+
+  /* Buttons (O / X) */
+  @keyframes popGlow {
+    0%   { transform: scale(0.2) rotate(-180deg); opacity: 0; }
+    70%  { transform: scale(1.2) rotate(10deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0); box-shadow: 0 0 20px #ff0, 0 0 40px #0ff; }
+  }
+  a[href="two.html"] {
+    animation: popGlow 1s ease forwards;
+  }
+  a[href="three.html"] {
+    animation: popGlow 1s ease forwards 0.3s;
+  }
+
+  /* Image floating */
+  @keyframes floaty {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-15px); }
+  }
+  img {
+    animation: floaty 3s ease-in-out infinite;
+  }
+
+  /* Page transition */
+  @keyframes flipExit {
+    0%   { transform: rotateY(0); opacity: 1; }
+    100% { transform: rotateY(90deg) scale(0.8); opacity: 0; filter: blur(5px); }
+  }
+  .flip-out {
+    animation: flipExit 0.8s ease forwards;
+    transform-origin: center;
+  }
+</style>
+
+</head>
+<body>
+    <div class="h-screen items-center relative justify-center flex">
+  <div class="bg-purple-600 absolute  size-200 flex justify-center items-center">
+    <h1 class="text-5xl absolute font-bold text-white text-center mb-140 bg-yellow-500 inline-block px-4 py-2 -180 rounded-2xl ">
+      TIC TAC TOE
+    </h1>
+    <div class="justify-center flex gap-24 text-center">
+    <div class="absolute top-110 text-3xl left-"><h1 class="text-black font-bold " id="PLAYER"> PLAYER 1</h1></div>
+        <div class="absolute gap-1 flex top-125 text-3xl left-70"><h1 class="text-black font-bold ">CHOICE <h1 class="font-bold text-white">(O)</h1 > <h1 class="font-bold"> & </h1> <h1 class="font-bold text-white" >(X)</h1></h1></div>
+
+<div class="absolute left-80 top-70 "><img class="size-40" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuxOD947yarQlQxk3janeD2er_Jnyqz8UvA0_QytamqNhtylFNYbA-FdaKCt88-vAqpys&usqp=CAU" alt="">
+  </div>
+  
+          <a  href="two.html" target="blank" class="bg-green-200 absolute bottom-20 left-40 size-35 font-bold p-5 text-7xl border-5 border-yellow-300">O </a>
+          <a  href="three.html" target="blank" class="bg-green-200 absolute bottom-20 right-40 size-35 font-bold p-5 text-7xl border-5 border-yellow-300"> X</a>
+</div>
+  </div>
+</div>
+<script>
+  const links = document.querySelectorAll("a[href]");
+  const page = document.body;
+
+  links.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      page.classList.add("flip-out");
+      page.addEventListener("animationend", () => {
+        window.location.href = link.getAttribute("href");
+      });
+    });
+  });
+</script>
+
+   <!-- <script src="my.js"></script> -->
+</body>
+</html>
